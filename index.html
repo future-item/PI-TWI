@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thinking with Patterns: Breaking the Perceptual Bottleneck in Visual Planning via Pattern Induction</title>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Thinking with Patterns: Breaking the Perceptual Bottleneck in
+              Visual Planning via Pattern Induction</h1>
+            <div class="is-size-5 publication-authors">
+              <div class="is-size-5 publication-authors">
+                <span class="author-block"> Yichang Jian,</span>
+                <span class="author-block"> Boyuan Xiao,</span>
+                <span class="author-block"> <sup></sup>Zhenyuan Huang,</span>
+                <span class="author-block"> <sup></sup>Yifei Peng,</span>
+                <span class="author-block"> <sup></sup>Yao-Xiang Ding<sup>†</sup></span>
+              </div>
+              <div class="is-size-5 publication-authors">
+              </div>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">State Key Lab of CAD&CG, Zhejiang University</span>
+            </div>
+            <div class="is-size-7 publication-authors">
+              <!-- <span class="author-block"><sup>*</sup>Equal Contribution</span> -->
+              <span class="author-block"><sup>†</sup>Corresponding Author</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <!-- <span class="link-block">
+                  <a href="https://openreview.net/forum?id=MI4yIBLprs"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>TMLR</span>
+                  </a>
+                </span> -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2411.18142" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <!-- <span class="link-block">
+                  <a href="https://github.com/future-item/AutoImagine"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span> -->
+                <!-- Dataset Link. -->
+                <!-- <span class="link-block">
+                  <a href="https://huggingface.co/collections/future-item/autoimagine"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="far fa-images"></i>
+                    </span>
+                    <span>Data</span>
+                  </a> -->
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <figure>
+          <img src="./figure/qualitative_craft.png" alt="Qualitative illustration of PI-TWI pipeline in Crafter.">
+          <figcaption>
+            <center>Qualitative illustration of our PI-TWI pipeline in <span class="smallcaps">Crafter</span>.</center>
+          </figcaption>
+        </figure>
+        <h2 class="subtitle has-text-centered">
+
+        </h2>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>Planning from raw visual input remains a significant challenge for current Vision-Language Models (VLMs),
+              when the complexity of input is beyond their one-step perception capability. Motivated by recent advances
+              in Thinking with Images (TWI), a reasonable solution is to decompose the perception process into simpler
+              steps by iteratively acquiring and incorporating local visual evidence.However, even though current VLMs
+              are well-trained in general TWI ability, their perceptual bottleneck in the planning domain remains. To
+              tackle this challenge, we formulate TWI as a tool to gradually build and reflect an accurate internal
+              world model. We find that the resulting training-free planning strategy enables VLMs to solve tasks that
+              are far beyond their initial capabilities, at the cost that too many TWI operations would significantly
+              increase the computational overhead.To further improve efficiency, we propose <em>Pattern Inference</em>,
+              a novel TWI strategy enabling VLMs to actively recognize known visual patterns in new tasks and directly
+              infer local world model structures. To obtain these patterns, we propose <em>Pattern Induction</em>, an
+              online inductive learning strategy treating visual patterns as <em>composite</em> and <em>reusable</em>
+              experts, which are autonomously discovered and optimized from experience.Experimental evaluations in <span
+                class="smallcaps">FrozenLake</span>, <span class="smallcaps">Crafter</span>, and <span
+                class="smallcaps">CubeBench</span> domains show that our approaches achieve a desirable balance between
+              accuracy and efficiency.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+
+      <!-- Method. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Method</h2>
+          <div class="content has-text-justified">
+            <p>
+              To break the perceptual limitation of VLMs in visual planning, we formulate Thinking with Images (TWI) as a tool of constructing a planner-sufficient symbolic world model from visual evidence. For reducing the cost of world model construction, we introduce <b>Pattern Inference</b>, a novel TWI strategy enabling VLMs to actively recognize known visual patterns in planning tasks and directly infer local world model structures. To obtain these composite and reusable patterns from learning, we propose <b>Pattern Induction</b>, an online inductive learning method for building the pattern library from experience. Since not all induced patterns are equally useful or correct, we propose <b>Pattern Reweighting</b>, a self-supervised gradient-based weight optimization mechanism that reweights induced patterns using past trajectories. We name this framework PI-TWI, short for Pattern-Induced Thinking with Images.
+            </p>
+            <figure>
+              <img src="./figure/method.png" alt="An overview of our PI-TWI pipeline.">
+              <figcaption>An overview of our PI-TWI pipeline.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <!--/ Method.. -->
+    </div>
+  </section>
+
+
+
+
+  <!-- <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{autoimagine2025,
+      title={Thinking with Patterns: Breaking the Perceptual Bottleneck in Visual Planning via Pattern Induction}, 
+      author={Jingming Liu and Yumeng Li and Boyuan Xiao and Yichang Jian and Ziang Qin and Tianjia Shao and Yao-Xiang Ding and Kun Zhou},
+      year={2025},
+      journal={Transactions on Machine Learning Research (TMLR)},
+      url={https://openreview.net/forum?id=MI4yIBLprs},
+}
+    </code></pre>
+    </div>
+  </section> -->
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <a class="icon-link" href="..." class="external-link" disabled>
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, licensed
+              under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
