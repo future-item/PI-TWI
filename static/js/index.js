@@ -30,32 +30,32 @@ $(document).ready(function() {
     });
 
     var options = {
-			slidesToScroll: 1,
-			slidesToShow: 3,
-			loop: true,
-			infinite: true,
-			autoplay: false,
-			autoplaySpeed: 3000,
+      slidesToScroll: 1,
+      slidesToShow: 3,
+      loop: true,
+      infinite: true,
+      autoplay: false,
+      autoplaySpeed: 3000,
     }
 
-		// Initialize all div with carousel class
-    var carousels = bulmaCarousel.attach('.carousel', options);
+    // Initialize carousel only when the page actually contains one.
+    if ($('.carousel').length && window.bulmaCarousel) {
+      var carousels = bulmaCarousel.attach('.carousel', options);
 
-    // Loop on each carousel initialized
-    for(var i = 0; i < carousels.length; i++) {
-    	// Add listener to  event
-    	carousels[i].on('before:show', state => {
-    		console.log(state);
-    	});
+      for(var i = 0; i < carousels.length; i++) {
+        carousels[i].on('before:show', state => {
+          console.log(state);
+        });
+      }
     }
 
     // Access to bulmaCarousel instance of an element
     var element = document.querySelector('#my-element');
     if (element && element.bulmaCarousel) {
-    	// bulmaCarousel instance is available as element.bulmaCarousel
-    	element.bulmaCarousel.on('before-show', function(state) {
-    		console.log(state);
-    	});
+      // bulmaCarousel instance is available as element.bulmaCarousel
+      element.bulmaCarousel.on('before-show', function(state) {
+        console.log(state);
+      });
     }
 
     /*var player = document.getElementById('interpolation-video');
@@ -65,14 +65,19 @@ $(document).ready(function() {
         player.currentTime = player.duration / 100 * this.value;
       })
     }, false);*/
-    preloadInterpolationImages();
 
-    $('#interpolation-slider').on('input', function(event) {
-      setInterpolationImage(this.value);
-    });
-    setInterpolationImage(0);
-    $('#interpolation-slider').prop('max', NUM_INTERP_FRAMES - 1);
+    // Avoid preloading the interpolation frame sequence on pages without that widget.
+    if ($('#interpolation-slider').length && $('#interpolation-image-wrapper').length) {
+      preloadInterpolationImages();
 
-    bulmaSlider.attach();
+      $('#interpolation-slider').on('input', function(event) {
+        setInterpolationImage(this.value);
+      });
+      setInterpolationImage(0);
+      $('#interpolation-slider').prop('max', NUM_INTERP_FRAMES - 1);
+    }
 
+    if ($('input[type=range].slider').length && window.bulmaSlider) {
+      bulmaSlider.attach();
+    }
 })
